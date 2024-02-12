@@ -1,0 +1,51 @@
+body {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  
+}
+
+input {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  width: 320px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+tr {
+  border: 1px solid #aaa;
+}
+
+th,
+td {
+  padding: 7px 10px;
+}
+th {
+  color: #aaa;
+  font-size: 12px;
+}
+td {
+  font-size: 14px;
+}
