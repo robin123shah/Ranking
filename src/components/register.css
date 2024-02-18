@@ -1,0 +1,78 @@
+
+input{
+    border: 1px solid black;
+}
+.signinbox{
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: #b5cece;
+  width: 100%;
+}
+.signform{
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sign_title{
+  margin: 15x; 
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bolder;
+    margin-bottom:75px;
+    font-size:35px;
+    color:darkcyan;
+}
+.signin_button{
+   height: 50px;
+      font-size: 15px;
+      margin-top: 64px;
+      margin-bottom: 30px;
+}
+.signin_next{
+  content: "";
+  
+}
+@media screen and (max-width: 480px) {
+    .formlabel {
+      font-size: 15px;
+    }
+    input::placeholder {
+      font-size: 10px;
+    }
+    .Style1_button {
+      height: 50px;
+      font-size: 15px;
+    }
+    a {
+      font-size: 15px;
+    }
+    h2 {
+      font-size: 30px;
+      margin: 0;
+    }
+    .signinbox{
+      background-color: white;
+    }
+    .signform{
+      box-shadow: none;
+    }
+    .signin_button{
+      margin: 50px auto;
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signspan{
+      display: block;
+    }
+    .signform .formInput{
+      margin-top: 25px;
+    }
+  }
