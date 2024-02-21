@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../styles.css";
 import { pointsTableObj } from "../points-table/pointsTableObj";
 import { teamsInMatches } from "../helpers/teamsInMatches";
@@ -7,8 +7,21 @@ import { tournamentConfig } from "../data/tournamentConfig";
 import { sortPointsTable } from "../points-table/sortPointsTable";
 
 export default function Table() {
-  const items = JSON.parse(localStorage.getItem('items'));
-  console.log(items,"hello");
+  // const items = JSON.parse(localStorage.getItem('items'));
+  const [items,setitem] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3001/getallusers') // Assuming your Express server is running on the same domain
+      .then(response => response.json())
+      .then(data => {
+        setitem(data);
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+
+
+
   if (items) {
   for(const ele of items){
     matches.push(ele)

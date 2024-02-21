@@ -22,39 +22,109 @@ export default function Addmatch() {
                 [name]: value
         }));
         };
-        const handleButtonClick = () => {
-        var newlist = {
-                date: formData.date,
-                type: 1,
-                fin: 1,
-                t1: formData.t1,
-                t1NR: 0,
-                t1Ov: parseInt(formData.t1Ov),
-                t1Ru: parseInt(formData.t1Ru),
-                t1SupOvrR: 0,
-                t1SupOvrW: 0,
-                t1Wk: parseInt(formData.t1Wk),
-                t2: formData.t2,
-                t2NR: 0,
-                t2Ov: parseInt(formData.t2Ov),
-                t2Ru: parseInt(formData.t2Ru),
-                t2SupOvrR: 0,
-                t2SupOvrW: 0,
-                t2Wk: parseInt(formData.t2Wk),
-                dlmethod: false
-        };
-        console.log(newlist)
-        let items = JSON.parse(localStorage.getItem('items'));
-        
-        if (items){
-                items.push(newlist)
+        const handleButtonClick = (e) => {
+                e.preventDefault();
+                var addAPI = "http://localhost:3001/insertuser";
+                var headers = {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                      };
+                var newlist = {
+                        date: formData.date,
+                        // type: 1,
+                        // fin: 1,
+                        t1: formData.t1,
+                        // t1NR: 0,
+                        t1Ov: parseInt(formData.t1Ov),
+                        t1Ru: parseInt(formData.t1Ru),
+                        // t1SupOvrR: 0,
+                        // t1SupOvrW: 0,
+                        t1Wk: parseInt(formData.t1Wk),
+                        t2: formData.t2,
+                        // t2NR: 0,
+                        t2Ov: parseInt(formData.t2Ov),
+                        t2Ru: parseInt(formData.t2Ru),
+                        // t2SupOvrR: 0,
+                        // t2SupOvrW: 0,
+                        t2Wk: parseInt(formData.t2Wk),
+                        // dlmethod: false
+                };
+                fetch(addAPI, {
+                        method: "POST",
+                        headers: headers,
+                        body: JSON.stringify(newlist),
+                      })
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response)
+                    // if (response[0] === "0"){
+                    //   alert("Email already exist")
+                    // }
+                    if (response[0] === "true"){
+                      console.log("Data Inserted")
+                    }
+                  })
+                .catch((error) => {
+                    alert("Error" + error);
+                  });
+                // console.log(newlist)
+                let items = JSON.parse(localStorage.getItem('items'));
+
+                if (items){
+                        items.push(newlist)
+                }
+                else{
+                        items = [newlist]
+                        console.log(items)
+                }
+                localStorage.setItem('items', JSON.stringify(items));
         }
-        else{
-                items = [newlist]
-                console.log(items)
-        }
-        localStorage.setItem('items', JSON.stringify(items));
-        }
+
+        const handleSubmit = (e) => {
+                e.preventDefault();
+                var SignUPAPI = "http://localhost:3001/insertuser";
+                // var SignUPAPI = "http://localhost:3001/insertuser";
+                var headers = {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                };
+                var Data = {
+                  username: detail.username,
+                  email: detail.email,
+                  number: detail.number,
+                  birthday: detail.birthday,
+                  password: detail.password,
+                  you_are: values.you_are,
+                  education_level: values.education_level,
+                  // looking_for: values.looking_for,
+                  // college_school: college_school,
+                  // carObj:carObj
+                };
+                fetch(SignUPAPI, {
+                  method: "POST",
+                  headers: headers,
+                  body: JSON.stringify(Data),
+                })
+                  .then((response) => response.json())
+                  .then((response) => {
+                    console.log(response)
+                    // if (response[0] === "0"){
+                    //   alert("Email already exist")
+                    // }
+                    if (response[0] === "true"){
+                      localStorage.setItem("login","true")
+                      // localStorage.setItem("email",response[1].email);
+                      localStorage.setItem("username",detail.username);
+                      navigate("/");
+                    }
+                  })
+                  .catch((error) => {
+                    alert("Error" + error);
+                  });
+              };
+            
+
+
         return (
                 <div className="form">
                 <form>
