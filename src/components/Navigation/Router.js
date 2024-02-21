@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter,Route,Routes } from "react-router-dom";
 import Table from "../table";
 import NavBar from "./NavBar";
-import Addmatch from "../AddMatch";
+import Addmatch from "../Addmatch";
 import Register from "../Register";
 const Router = () => {
     return (
